@@ -8,7 +8,7 @@
 <meta name="apple-mobile-web-app-title" content="Nexora">
 <meta name="theme-color" content="#0b0b0e">
 <meta name="format-detection" content="telephone=no">
-<script>try{var _s=JSON.parse(localStorage.getItem("nexora.v1")||"null"),_t=_s&&_s.theme;if(_t!=="light"&&_t!=="black")_t=(window.matchMedia&&matchMedia("(prefers-color-scheme: light)").matches)?"light":"black";document.documentElement.setAttribute("data-theme",_t);document.documentElement.setAttribute("data-lg",_s&&_s.o&&_s.o.lg===0?"0":"1")}catch(e){}</script>
+<script>try{var _s=JSON.parse(localStorage.getItem("nexora.v2")||"null"),_t=_s&&_s.theme;if(_t!=="light"&&_t!=="black")_t=(window.matchMedia&&matchMedia("(prefers-color-scheme: light)").matches)?"light":"black";document.documentElement.setAttribute("data-theme",_t);document.documentElement.setAttribute("data-lg",_s&&_s.o&&_s.o.lg===1?"1":"0")}catch(e){}</script>
 <title>Nexora</title>
 <style>
 :root{color-scheme:dark;--acc:#9a9aa8;--acc2:#5b8cff;--ok:#32d74b;--w:255,255,255;--tx:#f4f6fa;--mut:rgba(var(--w),.58);--gl:rgba(var(--w),.075);--gb:rgba(var(--w),.09);--ln:rgba(var(--w),.1);--bg1:#0b0b0e;--bg2:#060608;--bg3:#0a0a0d;--pn:#121216;--ease:cubic-bezier(.22,.8,.26,1)}
@@ -45,7 +45,7 @@ main{flex:1;min-height:0;display:flex;align-items:flex-end;padding-bottom:18px}
 .glass{background:var(--gl);border:1px solid var(--gb);-webkit-backdrop-filter:blur(22px);backdrop-filter:blur(22px);border-radius:20px;color:var(--tx)}
 .menu{width:100%;padding:4px 18px}
 .mrow{display:flex;align-items:center;gap:14px;padding:16px 0;border-bottom:1px solid var(--ln);font-size:15px;cursor:pointer;animation:rise .55s var(--ease) both}
-.mrow:nth-child(1){animation-delay:.08s}.mrow:nth-child(2){animation-delay:.14s}.mrow:nth-child(3){animation-delay:.2s}.mrow:nth-child(4){animation-delay:.26s}.mrow:nth-child(5){animation-delay:.32s}
+.mrow:nth-child(1){animation-delay:.08s}.mrow:nth-child(2){animation-delay:.14s}.mrow:nth-child(3){animation-delay:.2s}.mrow:nth-child(4){animation-delay:.26s}.mrow:nth-child(5){animation-delay:.32s}.mrow:nth-child(6){animation-delay:.38s}
 .mrow:last-child{border:0}
 .mrow .ic{width:22px;display:grid;place-items:center;opacity:.9}
 .mrow .tx{flex:1}.mrow .vl{color:var(--mut);font-size:13px}.mrow .ch{color:var(--mut)}
@@ -222,6 +222,30 @@ input[type=range]::-moz-range-thumb{width:26px;height:26px;border:0;border-radiu
 #splash.img .sn{text-shadow:0 2px 14px rgba(0,0,0,.6)}
 @keyframes ldg{to{width:100%}}
 @keyframes splashPop{from{opacity:0;transform:scale(.7)}}
+.hrow{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.hrow h1{margin:6px 0 8px}
+.chip{display:inline-flex;align-items:center;gap:7px;padding:6px 12px;border-radius:20px;background:var(--gl);border:1px solid var(--gb);font:600 12px inherit;font-family:inherit;color:var(--mut);cursor:pointer;margin-top:-2px;transition:color .35s,border-color .35s,transform .15s var(--ease)}
+.chip:active{transform:scale(.95)}
+.chip i{width:7px;height:7px;border-radius:50%;background:var(--mut);transition:background .35s,box-shadow .35s}
+.chip.on{color:var(--acc2);border-color:color-mix(in srgb,var(--acc2) 40%,transparent)}
+.chip.on i{background:var(--acc2);box-shadow:0 0 9px var(--acc2)}
+.log .ok2{color:var(--ok)}
+:root[data-theme=light] .log .ok2{color:#1c9c3a}
+:focus-visible{outline:2px solid var(--acc2);outline-offset:2px}
+.ta{width:100%;height:84px;resize:none;background:var(--gl);color:var(--tx);border:1px solid var(--gb);border-radius:12px;padding:10px;font:12px ui-monospace,Menlo,Consolas,monospace;-webkit-user-select:text;user-select:text}
+.logview{background:rgba(var(--w),.06);border-radius:12px;padding:12px;height:min(320px,45dvh);overflow:auto;font:11.5px/1.55 ui-monospace,Menlo,Consolas,monospace;white-space:pre-wrap;word-break:break-word;color:rgba(var(--w),.82);margin:0 0 12px;-webkit-user-select:text;user-select:text}
+#dlg{position:fixed;inset:0;z-index:11;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.45);opacity:0;visibility:hidden;transition:opacity .25s var(--ease),visibility 0s .25s}
+#dlg.show{opacity:1;visibility:visible;transition:opacity .25s var(--ease)}
+.dlgc{width:min(320px,86vw);padding:22px 20px 16px;text-align:center;border-radius:22px;background:color-mix(in srgb,var(--pn) 92%,transparent);-webkit-backdrop-filter:blur(30px);backdrop-filter:blur(30px);border:1px solid var(--gb);transform:scale(.92);transition:transform .4s var(--spring)}
+#dlg.show .dlgc{transform:none}
+.dlgc h3{margin:0 0 6px;font-size:18px}
+.dlgc p{margin:0 0 16px;color:var(--mut);font-size:14px;line-height:1.45}
+.dlgb{display:flex;gap:10px}.dlgb .mini{flex:1;min-height:44px}
+#toasts{position:fixed;top:calc(10px + env(safe-area-inset-top,0px));left:0;right:0;z-index:13;display:flex;flex-direction:column;align-items:center;gap:8px;pointer-events:none}
+.toast{padding:11px 18px;border-radius:22px;background:color-mix(in srgb,var(--pn) 84%,transparent);-webkit-backdrop-filter:blur(22px) saturate(1.8);backdrop-filter:blur(22px) saturate(1.8);border:1px solid var(--gb);box-shadow:0 10px 30px rgba(0,0,0,.3);font-size:14px;font-weight:600;max-width:88vw;animation:toastIn .5s var(--spring) both}
+.toast.out{animation:toastOut .3s ease forwards}
+@keyframes toastIn{from{opacity:0;transform:translateY(-24px) scale(.9)}}
+@keyframes toastOut{to{opacity:0;transform:translateY(-14px) scale(.96)}}
 @media (max-height:700px){h1{font-size:30px}.mrow{padding:13px 0}.logp{height:36dvh}.big{padding:15px}}
 @media (prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}}
 </style>
@@ -230,11 +254,12 @@ input[type=range]::-moz-range-thumb{width:26px;height:26px;border:0;border-radiu
 <div class="app">
   <div class="bg"><i></i><i></i><i></i></div>
   <button class="ghost" id="openSpoof" aria-label="Device"></button>
-  <header><h1>Nexora</h1><div class="sub" id="sub"></div></header>
+  <header><div class="hrow"><h1>Nexora</h1><button class="chip" id="chip" aria-label="Device info"><i></i><span id="chipT"></span></button></div><div class="sub" id="sub"></div></header>
   <main>
     <div class="glass menu" id="menu">
       <div class="mrow" id="mSet"><span class="ic"><svg class='s' viewBox='0 0 24 24'><circle cx='12' cy='12' r='3'/><path d='M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z'/></svg></span><span class="tx" data-t="settings"></span><span class="ch">›</span></div>
       <div class="mrow" id="mExp"><span class="ic"><svg class='s' viewBox='0 0 24 24'><polygon points='13 2 3 14 12 14 11 22 21 10 12 10 13 2'/></svg></span><span class="tx" data-t="exploit"></span><span class="vl" id="expVal"></span><span class="lockic"><svg class='s' viewBox='0 0 24 24'><rect x='3' y='11' width='18' height='11' rx='2'/><path d='M7 11V7a5 5 0 0 1 10 0v4'/></svg></span><span class="ch">›</span></div>
+      <div class="mrow" id="mDev"><span class="ic"><svg class='s' viewBox='0 0 24 24'><rect x='6' y='2' width='12' height='20' rx='3'/><line x1='11' y1='18' x2='13' y2='18'/></svg></span><span class="tx" data-t="devInfo"></span><span class="ch">›</span></div>
       <div class="mrow off" id="mSB"><span class="ic"><svg class='s' viewBox='0 0 24 24'><path d='M21 12a9 9 0 1 1-3-6.7'/><polyline points='21 3 21 9 15 9'/></svg></span><span class="tx" data-t="restartSB"></span></div>
       <div class="mrow off" id="mRU"><span class="ic"><svg class='s' viewBox='0 0 24 24'><path d='M12 2v10'/><path d='M18.4 6.6a9 9 0 1 1-12.8 0'/></svg></span><span class="tx" data-t="rebootUS"></span></div>
       <div class="mrow" id="mCr"><span class="ic"><svg class='s' viewBox='0 0 24 24'><circle cx='12' cy='12' r='10'/><line x1='12' y1='16' x2='12' y2='12'/><line x1='12' y1='8' x2='12.01' y2='8'/></svg></span><span class="tx" data-t="credits"></span><span class="ch">›</span></div>
@@ -260,6 +285,7 @@ input[type=range]::-moz-range-thumb{width:26px;height:26px;border:0;border-radiu
     <div class="card"><div class="row" style="flex-direction:column;align-items:stretch;gap:10px"><div style="display:flex;justify-content:space-between;gap:10px"><span data-t="storFree"></span><span id="storVal" style="color:var(--mut)"></span></div><div class="pb"><b id="storBar" style="width:0"></b></div></div></div>
     <div class="hint" data-t="storNote"></div>
     <div class="card"><div class="row lk" id="mOrder"><span data-t="ordTitle"></span><span style="color:var(--mut)">›</span></div></div>
+    <div class="card"><div class="row lk" id="mLog"><span data-t="actLog"></span><span style="color:var(--mut)">›</span></div><div class="row lk" id="mBak"><span data-t="bakTitle"></span><span style="color:var(--mut)">›</span></div></div>
     <div class="lbl" data-t="boot"></div>
     <div class="card"><div class="row"><div class="bprev bootPrev"></div><div class="bcol"><small data-t="bootSub"></small><div class="bbtns"><button class="mini bootPick" data-t="choose"></button><button class="mini red bootRm" data-t="remove"></button></div></div></div></div>
     <div class="lbl" data-t="theme"></div>
@@ -308,6 +334,28 @@ input[type=range]::-moz-range-thumb{width:26px;height:26px;border:0;border-radiu
   <button class="btn2" id="spoofOk" data-t="apply"></button>
 </div></div>
 
+<div class="sheet" id="devSheet"><div class="panel">
+  <h2 data-t="devInfo"></h2><p id="devSub"></p>
+  <div id="devBody"></div>
+  <button class="btn2" data-close data-t="close"></button>
+</div></div>
+
+<div class="sheet" id="logSheet"><div class="panel">
+  <h2 data-t="actLog"></h2><p data-t="actSub"></p>
+  <pre class="logview" id="logView"></pre>
+  <div class="bbtns"><button class="mini" id="logCopy" data-t="copy"></button><button class="mini red" id="logClear" data-t="clear"></button></div>
+  <button class="btn2" data-close data-t="done"></button>
+</div></div>
+
+<div class="sheet" id="bakSheet"><div class="panel">
+  <h2 data-t="bakTitle"></h2><p data-t="bakSub"></p>
+  <div class="lbl" data-t="bakExport"></div><textarea id="bakOut" class="ta" readonly></textarea>
+  <button class="mini" id="bakCopy" style="margin-top:8px" data-t="copy"></button>
+  <div class="lbl" data-t="bakImport"></div><textarea id="bakIn" class="ta"></textarea>
+  <button class="mini" id="bakRestore" style="margin-top:8px" data-t="bakRestore"></button>
+  <button class="btn2" data-close data-t="done"></button>
+</div></div>
+
 <div class="sheet" id="ordSheet"><div class="panel">
   <h2 data-t="ordTitle"></h2><p data-t="ordSub"></p>
   <div id="ordList"></div>
@@ -336,6 +384,7 @@ input[type=range]::-moz-range-thumb{width:26px;height:26px;border:0;border-radiu
       <div class="lbl" data-t="theme"></div>
       <div class="seg thSeg"><button data-th="auto" data-t="thAuto"></button><button data-th="black" data-t="black"></button><button data-th="light" data-t="white"></button></div>
       <div class="lbl" data-t="accent"></div><div class="acr acRow"></div>
+      <div class="card" style="margin-top:18px"><div class="row"><span data-t="lg"></span><div class="tog" data-k="lg"></div></div></div>
     </div>
     <div class="spage" data-p="2" hidden>
       <h2 data-t="s_dev"></h2><p data-t="s_devSub"></p>
@@ -352,6 +401,8 @@ input[type=range]::-moz-range-thumb{width:26px;height:26px;border:0;border-radiu
   </div>
   <div class="snav"><button class="mini" id="sBack" data-t="back"></button><button class="btn2" id="sNext"></button></div>
 </div>
+<div id="dlg"><div class="dlgc"><h3 id="dlgT"></h3><p id="dlgM"></p><div class="dlgb"><button class="mini" id="dlgNo"></button><button class="mini" id="dlgYes"></button></div></div></div>
+<div id="toasts"></div>
 <div id="boot"><div class="sp"></div></div>
 <div id="splash"><div class="bg"><i></i><i></i><i></i></div><div class="crlogo">N</div><div class="sn">Nexora</div><div class="spb"><b></b></div></div>
 <input type="file" id="bootFile" accept="image/*" hidden>
@@ -373,7 +424,7 @@ x_stormtime:"Works on every supported version up to iOS 27.2, with tweak injecti
 x_weweather:"WebKit-based entry with a fast launch. Tweak injection and JIT. Supports up to iOS 26.4.",
 pmPick:"Choose package managers",pmPickSub:"Select one or both. They will be installed to /var/jb.",install:"Install",pmSileoD:"Modern and fast",pmZebraD:"Classic and lightweight",
 spoofTitle:"Device",spoofSub:"Change the device model and iOS version.",device:"Device",apply:"Apply",detect:"Detect automatically",detNote:"Detection is approximate: Safari hides the exact model and may report an older iOS.",detOk:"Detected from this device. Check it and press Apply.",detFail:"Could not detect this device.",
-creators:"Created by",done:"Done",close:"Close",back:"Back",next:"Continue",start:"Get started",s_again:"Run setup again",s_welcome:"Welcome to Nexora",s_welcomeSub:"Let’s set things up. You can change most of this later in Settings.",s_look:"Appearance",s_lookSub:"Choose a theme and an accent color.",s_dev:"Your device",s_devSub:"We tried to detect it automatically. Check it and correct if needed.",s_av:"Available exploits: ",s_boot:"Loading screen",s_bootSub:"Pick a photo for the loading screen. This step is optional.",expLocked:"The exploit can’t be changed after the jailbreak.",pmHint0:"You will choose during the jailbreak. It can’t be changed afterwards.",pmHint1:"Installed during the jailbreak. Can’t be changed.",detOk2:"Detected from this device.",thAuto:"System",hap:"Haptic feedback",lg:"Liquid Glass",lgi:"Glass intensity",stor:"Storage",storFree:"Available storage",storOf:"of",storNA:"Unavailable",storNote:"Space available to Nexora in this browser. Websites cannot read the free space of the whole phone.",ordTitle:"Menu order",ordSub:"Move items up or down to rearrange the main menu.",ordReset:"Reset order",cr_team:"Team",cr_roleV:"Idea, exploits, testing",cr_roleC:"Design and code",cr_expl:"Exploits",cr_thanks:"Thanks to",cr_session:"This session",cr_foot:"Made with care by vitya and claude",cr_ver:"Version",cr_state:"State",cr_idle:"Not jailbroken",cr_pm:"Package manager",cr_inst:"App installer",cr_inj:"Tweak injection library",
+creators:"Created by",done:"Done",close:"Close",back:"Back",next:"Continue",start:"Get started",s_again:"Run setup again",s_welcome:"Welcome to Nexora",s_welcomeSub:"Let’s set things up. You can change most of this later in Settings.",s_look:"Appearance",s_lookSub:"Choose a theme and an accent color.",s_dev:"Your device",s_devSub:"We tried to detect it automatically. Check it and correct if needed.",s_av:"Available exploits: ",s_boot:"Loading screen",s_bootSub:"Pick a photo for the loading screen. This step is optional.",expLocked:"The exploit can’t be changed after the jailbreak.",pmHint0:"You will choose during the jailbreak. It can’t be changed afterwards.",pmHint1:"Installed during the jailbreak. Can’t be changed.",detOk2:"Detected from this device.",thAuto:"System",hap:"Haptic feedback",lg:"Liquid Glass",lgi:"Glass intensity",devInfo:"Device Info",dvId:"Identifier",dvChip:"Chip",dvMem:"Memory",dvKern:"Kernel",dvArch:"Architecture",dvAvail:"Compatible exploits",dvSince:"Jailbroken since",actLog:"Activity log",actSub:"Recent events and the log of the last jailbreak.",copy:"Copy",clear:"Clear",bakTitle:"Backup",bakSub:"Save your settings as a code and restore them later or on another device.",bakExport:"Your backup code",bakImport:"Restore from code",bakRestore:"Restore",bakPh:"Paste backup code here",cancel:"Cancel",rsTitle:"Reset jailbreak?",rsMsg:"The jailbreak status, TrollStore and jailbreak options will be reset. You can run the jailbreak again.",rsYes:"Reset",rbTitle:"Reboot userspace?",rbMsg:"SpringBoard and all running apps will restart.",rbYes:"Reboot",tJb:"Jailbreak completed in ",tSB:"SpringBoard restarted",tRU:"Userspace rebooted",tTS:"TrollStore installed",tIC:"Icon cache rebuilt",tCopy:"Copied",tRst:"Jailbreak reset",tBak:"Settings restored",tBakErr:"Invalid backup code",l_pre:"[*] Running pre-flight checks…",l_chk1:"[+] Supported iOS version: ",l_chk2:"[+] Exploit available: ",stor:"Storage",storFree:"Available storage",storOf:"of",storNA:"Unavailable",storNote:"Space available to Nexora in this browser. Websites cannot read the free space of the whole phone.",ordTitle:"Menu order",ordSub:"Move items up or down to rearrange the main menu.",ordReset:"Reset order",cr_team:"Team",cr_roleV:"Idea, exploits, testing",cr_roleC:"Design and code",cr_expl:"Exploits",cr_thanks:"Thanks to",cr_session:"This session",cr_foot:"Made with care by vitya and claude",cr_ver:"Version",cr_state:"State",cr_idle:"Not jailbroken",cr_pm:"Package manager",cr_inst:"App installer",cr_inj:"Tweak injection library",
 l_start:"[*] Nexora started",l_dev:"[*] Device: ",l_sel:"[*] Selected exploit: ",l_run:"[+] Running ",l_heap:"[*] Heap grooming… ",l_kprim:"[+] Got kread/kwrite primitive",l_kbase:"[*] kernelbase = ",l_pac:"[*] Bypassing PAC (arm64e)…",l_pacok:"[+] PAC bypass successful",l_ppl:"[*] Bypassing PPL…",l_pplok:"[+] PPL pages patched",l_sbx:"[*] Patching sandbox and AMFI…",l_tc:"[*] Updating trustcache (rootless)…",l_root:"[+] Root privileges obtained (uid=0)",l_wait:"[?] Waiting for package manager choice",l_boot:"[*] Extracting bootstrap to /var/jb…",l_inst:"[*] Installing ",l_ld:"[*] Running ldrestart…",l_inj:"[*] Injecting ElleKit into processes…",l_reb:"[*] Userspace reboot…",l_pmok:"[+] Installed: ",l_ok:"[+] Jailbreak completed successfully!"},
 ru:{settings:"Настройки",exploit:"Эксплойт",restartSB:"Перезапуск SpringBoard",rebootUS:"Перезагрузка userspace",credits:"О программе",go:"Jailbreak",going:"Выполняется…",jb:"Jailbroken",
 tabGen:"Основные",tabJb:"Jailbreak",pmTitle:"Менеджеры пакетов",pmHint:"Можно выбрать один или оба",verb:"Подробные логи",auto:"Автозапуск после ребута",
@@ -387,7 +438,7 @@ x_stormtime:"Работает на всех версиях до iOS 27.2, с twe
 x_weweather:"Вход через WebKit, быстрый запуск. Tweak injection и JIT. Поддержка до iOS 26.4.",
 pmPick:"Выберите менеджеры пакетов",pmPickSub:"Можно выбрать оба. Они установятся в /var/jb.",install:"Установить",pmSileoD:"Современный и быстрый",pmZebraD:"Классический, лёгкий",
 spoofTitle:"Устройство",spoofSub:"Смена модели и версии iOS.",device:"Устройство",apply:"Применить",detect:"Определить автоматически",detNote:"Определение приблизительное: Safari не показывает точную модель и может называть более старую iOS.",detOk:"Определено по этому устройству. Проверьте и нажмите «Применить».",detFail:"Не удалось определить устройство.",
-creators:"Создатели",done:"Готово",close:"Закрыть",back:"Назад",next:"Продолжить",start:"Начать",s_again:"Пройти настройку снова",s_welcome:"Добро пожаловать в Nexora",s_welcomeSub:"Давайте всё настроим. Большую часть можно потом изменить в настройках.",s_look:"Оформление",s_lookSub:"Выберите тему и акцентный цвет.",s_dev:"Ваше устройство",s_devSub:"Мы попробовали определить его автоматически. Проверьте и поправьте при необходимости.",s_av:"Доступные эксплойты: ",s_boot:"Экран загрузки",s_bootSub:"Выберите фото для экрана загрузки. Этот шаг можно пропустить.",expLocked:"Эксплойт нельзя изменить после джейлбрейка.",pmHint0:"Вы выберете во время джейлбрейка. Потом изменить нельзя.",pmHint1:"Установлены при джейлбрейке. Изменить нельзя.",detOk2:"Определено по этому устройству.",thAuto:"Системная",hap:"Вибрация",lg:"Liquid Glass",lgi:"Интенсивность стекла",stor:"Память",storFree:"Доступная память",storOf:"из",storNA:"Недоступно",storNote:"Место, доступное Nexora в этом браузере. Сайты не могут узнать свободное место на всём телефоне.",ordTitle:"Порядок меню",ordSub:"Двигайте пункты вверх и вниз, чтобы поменять главное меню.",ordReset:"Сбросить порядок",cr_team:"Команда",cr_roleV:"Идея, эксплойты, тесты",cr_roleC:"Дизайн и код",cr_expl:"Эксплойты",cr_thanks:"Благодарности",cr_session:"Текущая сессия",cr_foot:"Сделано с душой vitya и claude",cr_ver:"Версия",cr_state:"Состояние",cr_idle:"Не выполнен",cr_pm:"Менеджер пакетов",cr_inst:"Установщик приложений",cr_inj:"Библиотека инъекции твиков",
+creators:"Создатели",done:"Готово",close:"Закрыть",back:"Назад",next:"Продолжить",start:"Начать",s_again:"Пройти настройку снова",s_welcome:"Добро пожаловать в Nexora",s_welcomeSub:"Давайте всё настроим. Большую часть можно потом изменить в настройках.",s_look:"Оформление",s_lookSub:"Выберите тему и акцентный цвет.",s_dev:"Ваше устройство",s_devSub:"Мы попробовали определить его автоматически. Проверьте и поправьте при необходимости.",s_av:"Доступные эксплойты: ",s_boot:"Экран загрузки",s_bootSub:"Выберите фото для экрана загрузки. Этот шаг можно пропустить.",expLocked:"Эксплойт нельзя изменить после джейлбрейка.",pmHint0:"Вы выберете во время джейлбрейка. Потом изменить нельзя.",pmHint1:"Установлены при джейлбрейке. Изменить нельзя.",detOk2:"Определено по этому устройству.",thAuto:"Системная",hap:"Вибрация",lg:"Liquid Glass",lgi:"Интенсивность стекла",devInfo:"Об устройстве",dvId:"Идентификатор",dvChip:"Чип",dvMem:"Память",dvKern:"Ядро",dvArch:"Архитектура",dvAvail:"Подходящие эксплойты",dvSince:"Джейлбрейк с",actLog:"Журнал действий",actSub:"Последние события и лог последнего джейлбрейка.",copy:"Копировать",clear:"Очистить",bakTitle:"Резервная копия",bakSub:"Сохраните настройки в виде кода и восстановите их позже или на другом устройстве.",bakExport:"Ваш код копии",bakImport:"Восстановить из кода",bakRestore:"Восстановить",bakPh:"Вставьте код сюда",cancel:"Отмена",rsTitle:"Сбросить джейлбрейк?",rsMsg:"Статус джейлбрейка, TrollStore и его параметры будут сброшены. Джейлбрейк можно выполнить снова.",rsYes:"Сбросить",rbTitle:"Перезагрузить userspace?",rbMsg:"SpringBoard и все запущенные приложения перезапустятся.",rbYes:"Перезагрузить",tJb:"Джейлбрейк выполнен за ",tSB:"SpringBoard перезапущен",tRU:"Userspace перезагружен",tTS:"TrollStore установлен",tIC:"Кэш иконок пересобран",tCopy:"Скопировано",tRst:"Джейлбрейк сброшен",tBak:"Настройки восстановлены",tBakErr:"Неверный код копии",l_pre:"[*] Предварительные проверки…",l_chk1:"[+] Версия iOS поддерживается: ",l_chk2:"[+] Эксплойт доступен: ",stor:"Память",storFree:"Доступная память",storOf:"из",storNA:"Недоступно",storNote:"Место, доступное Nexora в этом браузере. Сайты не могут узнать свободное место на всём телефоне.",ordTitle:"Порядок меню",ordSub:"Двигайте пункты вверх и вниз, чтобы поменять главное меню.",ordReset:"Сбросить порядок",cr_team:"Команда",cr_roleV:"Идея, эксплойты, тесты",cr_roleC:"Дизайн и код",cr_expl:"Эксплойты",cr_thanks:"Благодарности",cr_session:"Текущая сессия",cr_foot:"Сделано с душой vitya и claude",cr_ver:"Версия",cr_state:"Состояние",cr_idle:"Не выполнен",cr_pm:"Менеджер пакетов",cr_inst:"Установщик приложений",cr_inj:"Библиотека инъекции твиков",
 l_start:"[*] Nexora запущена",l_dev:"[*] Устройство: ",l_sel:"[*] Выбран эксплойт: ",l_run:"[+] Запуск ",l_heap:"[*] Heap grooming… ",l_kprim:"[+] Получен примитив kread/kwrite",l_kbase:"[*] kernelbase = ",l_pac:"[*] Обход PAC (arm64e)…",l_pacok:"[+] PAC bypass успешен",l_ppl:"[*] Обход PPL…",l_pplok:"[+] Страницы PPL пропатчены",l_sbx:"[*] Патч sandbox и AMFI…",l_tc:"[*] Обновление trustcache (rootless)…",l_root:"[+] Привилегии root получены (uid=0)",l_wait:"[?] Ожидание выбора менеджеров пакетов",l_boot:"[*] Распаковка bootstrap в /var/jb…",l_inst:"[*] Установка ",l_ld:"[*] Запуск ldrestart…",l_inj:"[*] Инжект ElleKit в процессы…",l_reb:"[*] Userspace reboot…",l_pmok:"[+] Установлено: ",l_ok:"[+] Джейлбрейк выполнен успешно!"}
 };
 var devs=[["iPhone 8","iPhone10,4"],["iPhone 8 Plus","iPhone10,5"],["iPhone X","iPhone10,6"],["iPhone XR","iPhone11,8"],["iPhone XS","iPhone11,2"],["iPhone XS Max","iPhone11,6"],["iPhone SE (2nd gen)","iPhone12,8"],["iPhone 11","iPhone12,1"],["iPhone 11 Pro","iPhone12,3"],["iPhone 11 Pro Max","iPhone12,5"],["iPhone 12 mini","iPhone13,1"],["iPhone 12","iPhone13,2"],["iPhone 12 Pro","iPhone13,3"],["iPhone 12 Pro Max","iPhone13,4"],["iPhone 13 mini","iPhone14,4"],["iPhone 13","iPhone14,5"],["iPhone 13 Pro","iPhone14,2"],["iPhone 13 Pro Max","iPhone14,3"],["iPhone SE (3rd gen)","iPhone14,6"],["iPhone 14","iPhone14,7"],["iPhone 14 Plus","iPhone14,8"],["iPhone 14 Pro","iPhone15,2"],["iPhone 14 Pro Max","iPhone15,3"],["iPhone 15","iPhone15,4"],["iPhone 15 Plus","iPhone15,5"],["iPhone 15 Pro","iPhone16,1"],["iPhone 15 Pro Max","iPhone16,2"],["iPhone 16","iPhone17,3"],["iPhone 16 Plus","iPhone17,4"],["iPhone 16 Pro","iPhone17,1"],["iPhone 16 Pro Max","iPhone17,2"],["iPhone 16e","iPhone17,5"],["iPhone Air","iPhone18,4"],["iPhone 17","iPhone18,3"],["iPhone 17 Pro","iPhone18,1"],["iPhone 17 Pro Max","iPhone18,2"]];
@@ -398,8 +449,8 @@ var ELLE="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAIAAABt+uBvAAAT
 var ACS=["#5b8cff","#ff5fa2","#ff5a5f","#ff9f43","#34d27b","#2ec4d6","#a259ff"];
 var BOLT='<svg class="s" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>';
 var CHECK='<svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>';
-var KEY="nexora.v1",BK="nexora.boot";
-var S={setup:0,done:0,exp:"darksword",pms:["Sileo"],dev:"iPhone 13",ios:"18.3",lang:"en",theme:"auto",order:["set","exp","sb","ru","cr"],ac:"#5b8cff",ts:0,lgi:60,o:{inj:1,hide:1,verb:1,auto:0,jit:0,ssh:0,ota:0,safe:0,hap:1,lg:1}};
+var KEY="nexora.v2",BK="nexora.boot";
+var S={setup:0,done:0,exp:"darksword",pms:["Sileo"],dev:"iPhone 13",ios:"18.3",lang:"en",theme:"auto",order:["set","exp","dev","sb","ru","cr"],ac:"#5b8cff",ts:0,jbAt:0,lgi:60,o:{inj:1,hide:1,verb:1,auto:0,jit:0,ssh:0,ota:0,safe:0,hap:1,lg:0}};
 var busy=false,tsBusy=false,ovBusy=false,bootImg="",tab="gen",saved=false;
 
 function t(k){return (L[S.lang]&&L[S.lang][k])||L.en[k]||k}
@@ -424,8 +475,8 @@ function load(){
   if(!Array.isArray(S.pms)||!S.pms.length)S.pms=["Sileo"];
   if(!L[S.lang])S.lang="en";
   if(S.theme!=="light"&&S.theme!=="black")S.theme="auto";
-  var dflt=["set","exp","sb","ru","cr"];
-  if(!Array.isArray(S.order)||S.order.length!==5||!dflt.every(function(k){return S.order.indexOf(k)>-1}))S.order=dflt;
+  var dflt=["set","exp","dev","sb","ru","cr"];
+  if(!Array.isArray(S.order)||S.order.length!==6||!dflt.every(function(k){return S.order.indexOf(k)>-1}))S.order=dflt;
 }
 function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
 
@@ -451,14 +502,14 @@ function renderExp(){
     var ok=avail(x),d=document.createElement("div"),sel=x.id===S.exp;
     d.className="opt"+(sel?" on":"")+(ok?"":" dis")+(lock?" ro":"")+(lock&&!sel?" lk0":"");
     d.innerHTML='<i>'+BOLT+'</i><div><b>'+x.id+'<em class="tag">'+t(x.own?"exOwn":"exThird")+'</em></b><small>'+t("x_"+x.id)+'</small><small class="sup">'+t("support")+' iOS '+x.rng+(ok?'':' · '+t("exNA")+S.ios)+'</small></div>';
-    if(ok&&!lock)d.onclick=function(){S.exp=x.id;render()};
+    if(ok&&!lock){d.tabIndex=0;d.onclick=function(){S.exp=x.id;render()}}
     el.appendChild(d);
   });
 }
 function pmItem(p,on,click){
   var d=document.createElement("div");d.className="opt"+(on?" on":"");
   d.innerHTML='<i><img alt="" src="'+p.ic+'"></i><div><b>'+p.id+'</b><small>'+t(p.k)+'</small></div><span class="chk">'+(on?CHECK:"")+'</span>';
-  if(click)d.onclick=click;
+  if(click){d.onclick=click;d.tabIndex=0}
   return d;
 }
 function renderPM(){
@@ -476,8 +527,9 @@ function render(){
   var m=document.querySelector('meta[name=theme-color]');if(m)m.content=th==="light"?"#f4f6fb":"#0b0b0e";
   $$("[data-t]").forEach(function(e){e.textContent=t(e.dataset.t)});
   var d=devs[didx(S.dev)],v=ioss[iidx(S.ios)];
-  $("#sub").textContent="iOS 16.5 - 27.2 | A11 - A19, M1\n"+d[0]+" | iOS "+v[0]+" ("+v[1]+")\nVersion 2.0.1 | rootless\nby vitya, claude";
+  $("#sub").textContent="iOS 16.5 - 27.2 | A11 - A19, M1\n"+d[0]+" | iOS "+v[0]+" ("+v[1]+")\nVersion 2.1.0 | rootless\nby vitya, claude";
   $("#expVal").textContent=S.exp;$("#mExp").classList.toggle("locked",jb);
+  $("#chip").classList.toggle("on",jb);$("#chipT").textContent=jb?t("jb")+" · "+S.exp:t("cr_idle");$("#bakIn").placeholder=t("bakPh");
   $("#pmHintS").textContent=t(jb?"pmHint1":"pmHint0");
   $("#sDev").value=didx(S.dev);$("#sIos").value=iidx(S.ios);
   $("#sExp").textContent=t("s_av")+EXP.filter(avail).map(function(x){return x.id}).join(", ");
@@ -486,7 +538,7 @@ function render(){
   var go=$("#go");go.disabled=busy||jb;go.classList.toggle("done",jb);
   $("#goTxt").textContent=busy?t("going"):jb?t("jb"):t("go");
   $("#tJb").classList.toggle("locked",!jb);$("#jbNote").hidden=jb;
-  $$(".tog").forEach(function(x){x.classList.toggle("on",!!S.o[x.dataset.k])});
+  $$(".tog").forEach(function(x){var on=!!S.o[x.dataset.k];x.classList.toggle("on",on);x.setAttribute("aria-checked",on)});
   $$("#stSeg button").forEach(function(b){b.classList.toggle("on",b.dataset.s===tab)});
   $$(".thSeg button").forEach(function(b){b.classList.toggle("on",b.dataset.th===S.theme)});
   $$(".langSeg button").forEach(function(b){b.classList.toggle("on",b.dataset.l===S.lang)});
@@ -508,15 +560,15 @@ function applyBoot(){
 function show(id){$(id).classList.add("show")}
 function hide(id){$(id).classList.remove("show")}
 async function plain(ms){if(ovBusy)return;ovBusy=true;$("#boot").classList.add("show");buzz(2);await wait(ms);haptic(14);$("#boot").classList.remove("show");await wait(520);ovBusy=false}
-function log(m,c){var l=$("#log"),d=document.createElement("div");if(c)d.className=c;d.textContent=m;l.appendChild(d);l.scrollTop=l.scrollHeight}
+function log(m,c){var l=$("#log"),d=document.createElement("div");if(c)d.className=c;d.textContent=m;l.appendChild(d);l.scrollTop=l.scrollHeight;act(m)}
 function prog(p){$("#bar").style.width=p+"%"}
 function askPM(){return new Promise(function(res){show("#pmSheet");$("#pmOk").onclick=function(){hide("#pmSheet");res()}})}
 
 async function run(){
-  if(busy||S.done)return;busy=true;haptic(18);
+  if(busy||S.done)return;busy=true;haptic(18);var t0=Date.now();
   $("#menu").hidden=true;$("#logp").hidden=false;$("#log").innerHTML="";prog(0);render();
   var d=devs[didx(S.dev)],v=ioss[iidx(S.ios)],tag=t(getExp(S.exp).own?"exOwn":"exThird");
-  var s=[[t("l_start"),"hl",300,4],[t("l_dev")+d[1]+", iOS "+v[0],"",300,8],[t("l_sel")+S.exp+" ("+tag+")","hl",400,12],[t("l_run")+S.exp+"…","",900,20],[t("l_heap")+hex(8),"",800,28,1],[t("l_kprim"),"ok",900,38],[t("l_kbase")+"0xfffffff0"+hex(8),"",500,44,1],[t("l_pac"),"",800,52],[t("l_pacok"),"ok",500,56],[t("l_ppl"),"",900,62],[t("l_pplok"),"ok",500,66],[t("l_sbx"),"",800,72],[t("l_tc"),"",700,78,1],[t("l_root"),"ok",500,82]];
+  var s=[[t("l_start"),"hl",300,4],[t("l_dev")+d[1]+", iOS "+v[0],"",300,8],[t("l_sel")+S.exp+" ("+tag+")","hl",400,12],[t("l_pre"),"",350,13],[t("l_chk1")+v[0],"ok2",250,14],[t("l_chk2")+S.exp,"ok2",250,15],[t("l_run")+S.exp+"…","",900,20],[t("l_heap")+hex(8),"",800,28,1],[t("l_kprim"),"ok",900,38],[t("l_kbase")+"0xfffffff0"+hex(8),"",500,44,1],[t("l_pac"),"",800,52],[t("l_pacok"),"ok",500,56],[t("l_ppl"),"",900,62],[t("l_pplok"),"ok",500,66],[t("l_sbx"),"",800,72],[t("l_tc"),"",700,78,1],[t("l_root"),"ok",500,82]];
   for(var i=0;i<s.length;i++){if(!(s[i][4]&&!S.o.verb))log(s[i][0],s[i][1]);if(s[i][1]==="ok")haptic(10);prog(s[i][3]);await wait(s[i][2])}
   log(t("l_wait"),"hl");await askPM();
   var names=S.pms.join(", ");
@@ -525,13 +577,13 @@ async function run(){
   log(t("l_pmok")+names,"ok");log(t("l_ok"),"ok");
   await wait(1000);
   ovBusy=true;$("#boot").classList.add("show");buzz(2);await wait(4200);
-  busy=false;S.done=1;$("#logp").hidden=true;$("#menu").hidden=false;render();buzz(3);
+  busy=false;S.done=1;S.jbAt=Date.now();$("#logp").hidden=true;$("#menu").hidden=false;render();buzz(3);toast(t("tJb")+Math.round((Date.now()-t0)/1000)+" s");
   $("#boot").classList.remove("show");await wait(520);ovBusy=false;
 }
 
 function resetJb(){
   if(busy)return;
-  S.done=0;S.ts=0;tsBusy=false;
+  S.done=0;S.ts=0;S.jbAt=0;tsBusy=false;
   S.o.inj=1;S.o.hide=1;S.o.jit=0;S.o.ssh=0;S.o.ota=0;S.o.safe=0;
   render();
 }
@@ -560,6 +612,43 @@ function applyLG(){
   var r=$("#lgi");if(r){r.value=S.lgi;var p=(S.lgi-20)/80*100;r.style.background="linear-gradient(90deg,var(--acc2) "+p+"%,rgba(var(--w),.2) "+p+"%)"}
   $("#lgiRow").classList.toggle("off",!S.o.lg);
 }
+/* ---- activity log ---- */
+var LOGK="nexora.log",ALOG=[];
+function loadLog(){try{ALOG=JSON.parse(localStorage.getItem(LOGK)||"[]");if(!Array.isArray(ALOG))ALOG=[]}catch(e){ALOG=[]}}
+function act(m){
+  var d=new Date(),p=function(n){return ("0"+n).slice(-2)};
+  ALOG.push("["+p(d.getHours())+":"+p(d.getMinutes())+":"+p(d.getSeconds())+"] "+m);
+  if(ALOG.length>300)ALOG.splice(0,ALOG.length-300);
+  try{localStorage.setItem(LOGK,JSON.stringify(ALOG))}catch(e){}
+}
+function renderLogView(){var v=$("#logView");v.textContent=ALOG.length?ALOG.join("\n"):"—";v.scrollTop=v.scrollHeight}
+function copyText(s){
+  function fb(){return new Promise(function(res){var a=document.createElement("textarea");a.value=s;a.style.cssText="position:fixed;left:-99px;opacity:0";document.body.appendChild(a);a.select();try{document.execCommand("copy")}catch(e){}a.remove();res()})}
+  if(navigator.clipboard&&navigator.clipboard.writeText)return navigator.clipboard.writeText(s).catch(fb);
+  return fb();
+}
+/* ---- toasts and confirmation dialog ---- */
+function toast(msg){
+  var w=$("#toasts"),el=document.createElement("div");el.className="toast";el.textContent=msg;w.appendChild(el);haptic(6);
+  setTimeout(function(){el.classList.add("out");setTimeout(function(){el.remove()},320)},2600);
+}
+function ask(title,msg,yes,danger){
+  return new Promise(function(res){
+    $("#dlgT").textContent=title;$("#dlgM").textContent=msg;$("#dlgYes").textContent=yes;$("#dlgNo").textContent=t("cancel");
+    $("#dlgYes").className="mini"+(danger?" red":"");$("#dlg").classList.add("show");
+    function done(v){$("#dlg").classList.remove("show");res(v)}
+    $("#dlgYes").onclick=function(){done(true)};$("#dlgNo").onclick=function(){done(false)};
+  });
+}
+/* ---- device info ---- */
+var HW={"iPhone 8":["A11 Bionic","2 GB"],"iPhone 8 Plus":["A11 Bionic","3 GB"],"iPhone X":["A11 Bionic","3 GB"],"iPhone XR":["A12 Bionic","3 GB"],"iPhone XS":["A12 Bionic","4 GB"],"iPhone XS Max":["A12 Bionic","4 GB"],"iPhone SE (2nd gen)":["A13 Bionic","3 GB"],"iPhone 11":["A13 Bionic","4 GB"],"iPhone 11 Pro":["A13 Bionic","4 GB"],"iPhone 11 Pro Max":["A13 Bionic","4 GB"],"iPhone 12 mini":["A14 Bionic","4 GB"],"iPhone 12":["A14 Bionic","4 GB"],"iPhone 12 Pro":["A14 Bionic","6 GB"],"iPhone 12 Pro Max":["A14 Bionic","6 GB"],"iPhone 13 mini":["A15 Bionic","4 GB"],"iPhone 13":["A15 Bionic","4 GB"],"iPhone 13 Pro":["A15 Bionic","6 GB"],"iPhone 13 Pro Max":["A15 Bionic","6 GB"],"iPhone SE (3rd gen)":["A15 Bionic","4 GB"],"iPhone 14":["A15 Bionic","6 GB"],"iPhone 14 Plus":["A15 Bionic","6 GB"],"iPhone 14 Pro":["A16 Bionic","6 GB"],"iPhone 14 Pro Max":["A16 Bionic","6 GB"],"iPhone 15":["A16 Bionic","6 GB"],"iPhone 15 Plus":["A16 Bionic","6 GB"],"iPhone 15 Pro":["A17 Pro","8 GB"],"iPhone 15 Pro Max":["A17 Pro","8 GB"],"iPhone 16":["A18","8 GB"],"iPhone 16 Plus":["A18","8 GB"],"iPhone 16 Pro":["A18 Pro","8 GB"],"iPhone 16 Pro Max":["A18 Pro","8 GB"],"iPhone 16e":["A18","8 GB"],"iPhone Air":["A19 Pro","12 GB"],"iPhone 17":["A19","8 GB"],"iPhone 17 Pro":["A19 Pro","12 GB"],"iPhone 17 Pro Max":["A19 Pro","12 GB"]};
+function renderDev(){
+  var d=devs[didx(S.dev)],v=ioss[iidx(S.ios)],hw=HW[d[0]]||["—","—"],pr=v[0].split("."),dar={16:22,17:23,18:24,26:25,27:26}[+pr[0]]||24;
+  var rows=[[t("device"),d[0]],[t("dvId"),d[1]],[t("dvChip"),hw[0]],[t("dvMem"),hw[1]],["iOS",v[0]+" ("+v[1]+")"],[t("dvKern"),"Darwin "+dar+"."+(pr[1]||"0")+".0"],[t("dvArch"),/A11/.test(hw[0])?"arm64":"arm64e"],[t("dvAvail"),EXP.filter(avail).map(function(x){return x.id}).join(", ")],[t("cr_state"),S.done?t("jb"):t("cr_idle")]];
+  if(S.done)rows.push([t("exploit"),S.exp],[t("pmTitle"),S.pms.join(", ")],[t("dvSince"),new Date(S.jbAt||Date.now()).toLocaleString(S.lang==="ru"?"ru-RU":"en-GB")]);
+  $("#devSub").textContent=d[0]+" · iOS "+v[0];
+  $("#devBody").innerHTML='<div class="card">'+rows.map(function(r){return '<div class="row"><span>'+r[0]+'</span><span class="cv">'+r[1]+'</span></div>'}).join("")+'</div>';
+}
 /* ---- haptics ---- */
 var hl=document.createElement("label");hl.style.cssText="position:fixed;left:-99px;top:-99px;opacity:0;pointer-events:none";
 var hi=document.createElement("input");hi.type="checkbox";hi.setAttribute("switch","");hl.appendChild(hi);document.body.appendChild(hl);
@@ -578,7 +667,7 @@ function storage(){
   }).catch(function(){el.textContent=t("storNA")});
 }
 /* ---- menu order ---- */
-var MAP={set:"mSet",exp:"mExp",sb:"mSB",ru:"mRU",cr:"mCr"},MLBL={set:"settings",exp:"exploit",sb:"restartSB",ru:"rebootUS",cr:"credits"},DEF_ORDER=["set","exp","sb","ru","cr"];
+var MAP={set:"mSet",exp:"mExp",dev:"mDev",sb:"mSB",ru:"mRU",cr:"mCr"},MLBL={set:"settings",exp:"exploit",dev:"devInfo",sb:"restartSB",ru:"rebootUS",cr:"credits"},DEF_ORDER=["set","exp","dev","sb","ru","cr"];
 var UP='<svg class="s" viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg>',DOWN='<svg class="s" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>';
 function applyOrder(){var m=$("#menu");S.order.forEach(function(k){m.appendChild($("#"+MAP[k]))})}
 function renderOrder(moved){
@@ -597,7 +686,7 @@ function moveItem(i,dir){
 /* ---- credits ---- */
 function renderCredits(){
   var d=devs[didx(S.dev)],v=ioss[iidx(S.ios)],ic=$("#trollIc").src;
-  $("#crVer").textContent=t("cr_ver")+" 2.0.1 (build 241)";
+  $("#crVer").textContent=t("cr_ver")+" 2.1.0 (build 260)";
   var team='<div class="card crs"><div class="row"><div class="av">V</div><div class="tt"><b>vitya</b><small>'+t("cr_roleV")+'</small></div></div><div class="row"><div class="av">C</div><div class="tt"><b>claude</b><small>'+t("cr_roleC")+'</small></div></div></div>';
   var ex='<div class="card crs" style="animation-delay:.08s">'+EXP.map(function(e){return '<div class="row"><div class="tt"><b>'+e.id+'</b><small>iOS '+e.rng+'</small></div><em class="tag">'+t(e.own?"exOwn":"exThird")+'</em></div>'}).join("")+'</div>';
   var th=[['<img class="ti sm" alt="" src="'+PMS[0].ic+'">',"Sileo","Sileo Team","cr_pm"],['<img class="ti sm" alt="" src="'+PMS[1].ic+'">',"Zebra","Wilson Styres","cr_pm"],['<img class="ti sm" alt="" src="'+ic+'">',"TrollStore","opa334","cr_inst"],['<img class="ti sm" alt="" src="'+ELLE+'">',"ElleKit","evelyne","cr_inj"]];
@@ -606,14 +695,48 @@ function renderCredits(){
   $("#crBody").innerHTML='<div class="lbl">'+t("cr_team")+'</div>'+team+'<div class="lbl">'+t("cr_expl")+'</div>'+ex+'<div class="lbl">'+t("cr_thanks")+'</div>'+tk+'<div class="lbl">'+t("cr_session")+'</div>'+ss;
 }
 /* ---- events ---- */
+$("#mDev").onclick=function(){renderDev();show("#devSheet")};
+$("#chip").onclick=function(){renderDev();show("#devSheet")};
+$("#mLog").onclick=function(){hide("#setSheet");renderLogView();show("#logSheet")};
+$("#logCopy").onclick=function(){copyText(ALOG.join("\n")).then(function(){toast(t("tCopy"))})};
+$("#logClear").onclick=function(){ALOG=[];try{localStorage.removeItem(LOGK)}catch(e){}renderLogView()};
+$("#mBak").onclick=function(){hide("#setSheet");try{$("#bakOut").value=btoa(unescape(encodeURIComponent(JSON.stringify(S))))}catch(e){$("#bakOut").value=""}show("#bakSheet")};
+$("#bakCopy").onclick=function(){copyText($("#bakOut").value).then(function(){toast(t("tCopy"))})};
+$("#bakRestore").onclick=function(){
+  try{
+    var o=JSON.parse(decodeURIComponent(escape(atob($("#bakIn").value.trim()))));
+    if(!o||typeof o!=="object"||!o.dev||!o.ios)throw 0;
+    localStorage.setItem(KEY,JSON.stringify(o));toast(t("tBak"));setTimeout(function(){location.reload()},800);
+  }catch(e){toast(t("tBakErr"))}
+};
+/* ---- sheets: swipe down to dismiss, Escape, keyboard, tick haptics ---- */
+$$(".sheet").forEach(function(sh){
+  var pn=sh.querySelector(".panel"),y0=0,dy=0,drag=false;
+  pn.addEventListener("touchstart",function(e){if(pn.scrollTop>0||sh.id==="pmSheet")return;y0=e.touches[0].clientY;dy=0;drag=true;pn.style.transition="none"},{passive:true});
+  pn.addEventListener("touchmove",function(e){if(!drag)return;dy=Math.max(0,e.touches[0].clientY-y0);pn.style.transform=dy?"translateY("+dy+"px)":""},{passive:true});
+  pn.addEventListener("touchend",function(){
+    if(!drag)return;drag=false;
+    if(dy>110){pn.style.transition="transform .3s var(--ease)";pn.style.transform="translateY(100%)";sh.classList.remove("show");setTimeout(function(){pn.style.transition="";pn.style.transform=""},340)}
+    else{pn.style.transition="transform .45s var(--spring)";pn.style.transform="";setTimeout(function(){pn.style.transition=""},480)}
+    dy=0;
+  });
+});
+document.addEventListener("keydown",function(e){
+  if(e.key==="Escape"){
+    if($("#dlg").classList.contains("show")){$("#dlgNo").click();return}
+    var open=[].filter.call($$(".sheet.show"),function(x){return x.id!=="pmSheet"}).pop();if(open)open.classList.remove("show");
+  }else if((e.key==="Enter"||e.key===" ")&&e.target.matches&&e.target.matches(".mrow,.opt,.row.lk,.tog")){e.preventDefault();e.target.click()}
+});
+$$(".mrow,.row.lk,.tog").forEach(function(x){x.tabIndex=0;x.setAttribute("role",x.classList.contains("tog")?"switch":"button")});
+document.addEventListener("click",function(e){if(e.target.closest&&e.target.closest(".tog,.seg button,.sw,.opt,.mrow,.row.lk"))haptic(6)},true);
 $("#mSet").onclick=function(){show("#setSheet");storage()};
 $("#mExp").onclick=function(){if(!busy)show("#expSheet")};
 $("#mCr").onclick=function(){renderCredits();show("#crSheet")};
 $("#mOrder").onclick=function(){hide("#setSheet");renderOrder();show("#ordSheet")};
 $("#ordReset").onclick=function(){S.order=DEF_ORDER.slice();applyOrder();renderOrder();haptic(8);save()};
-$("#mSB").onclick=function(){if(S.done)plain(2400)};
-$("#mRU").onclick=function(){if(S.done)plain(3800)};
-$("#mIC").onclick=function(){if(S.done)plain(2200)};
+$("#mSB").onclick=function(){if(!S.done)return;act("Restart SpringBoard");plain(2400).then(function(){toast(t("tSB"))})};
+$("#mRU").onclick=async function(){if(!S.done)return;if(!await ask(t("rbTitle"),t("rbMsg"),t("rbYes"),false))return;act("Reboot userspace");await plain(3800);toast(t("tRU"))};
+$("#mIC").onclick=function(){if(!S.done)return;act("Rebuild icon cache");plain(2200).then(function(){toast(t("tIC"))})};
 $("#openSpoof").onclick=function(){if(busy)return;fillSel();show("#spoofSheet")};
 $("#spoofOk").onclick=function(){S.dev=devs[+$("#selDev").value][0];S.ios=ioss[+$("#selIos").value][0];hide("#spoofSheet");render()};
 $("#detBtn").onclick=function(){
@@ -631,11 +754,11 @@ $$("#stSeg button").forEach(function(b){b.onclick=function(){
   var n=tab==="gen"?a:c;n.classList.remove("tabc");void n.offsetWidth;n.classList.add("tabc");
   render();
 }});
-$$(".tog").forEach(function(x){x.onclick=function(){S.o[x.dataset.k]=S.o[x.dataset.k]?0:1;render()}});
+$$(".tog").forEach(function(x){x.onclick=function(){S.o[x.dataset.k]=S.o[x.dataset.k]?0:1;act("option "+x.dataset.k+" = "+(S.o[x.dataset.k]?"on":"off"));render()}});
 $$(".thSeg button").forEach(function(b){b.onclick=function(){S.theme=b.dataset.th;render()}});
 $$(".langSeg button").forEach(function(b){b.onclick=function(){S.lang=b.dataset.l;render()}});
-$("#mReset").onclick=resetJb;
-$("#tsBtn").onclick=function(){if(!S.done||S.ts||tsBusy)return;tsBusy=true;render();setTimeout(function(){tsBusy=false;S.ts=1;render()},2200)};
+$("#mReset").onclick=async function(){if(busy)return;if(!await ask(t("rsTitle"),t("rsMsg"),t("rsYes"),true))return;resetJb();act("Reset jailbreak");toast(t("tRst"))};
+$("#tsBtn").onclick=function(){if(!S.done||S.ts||tsBusy)return;tsBusy=true;render();setTimeout(function(){tsBusy=false;S.ts=1;act("TrollStore installed");render();toast(t("tTS"))},2200)};
 $$(".bootPick").forEach(function(b){b.onclick=function(){$("#bootFile").click()}});
 $$(".bootPrev").forEach(function(b){b.onclick=function(){plain(2400)}});
 $$(".bootRm").forEach(function(b){b.onclick=function(){bootImg="";try{localStorage.removeItem(BK)}catch(e){}applyBoot()}});
@@ -652,7 +775,7 @@ $("#sDev").innerHTML=devOpts;$("#sIos").innerHTML=iosOpts;
 $("#sDev").onchange=function(){S.dev=devs[+this.value][0];render()};
 $("#sIos").onchange=function(){S.ios=ioss[+this.value][0];render()};
 $("#sDet").onclick=function(){var r=detect();if(!r){$("#sDetMsg").textContent=t("detFail");return}if(r.dev)S.dev=r.dev;if(r.ios)S.ios=r.ios;$("#sDetMsg").textContent=t("detOk2");render()};
-$("#sNext").onclick=function(){if(sp<3)setupGo(sp+1,false);else{S.setup=1;$("#setup").classList.remove("show");render()}};
+$("#sNext").onclick=function(){if(sp<3)setupGo(sp+1,false);else{S.setup=1;$("#setup").classList.remove("show");$(".app").classList.add("in");render()}};
 $("#sBack").onclick=function(){if(sp>0)setupGo(sp-1,true)};
 $("#mSetup").onclick=function(){hide("#setSheet");setupGo(0,true);$("#setup").classList.add("show")};
 $("#bootFile").onchange=function(){
@@ -675,16 +798,16 @@ $("#bootFile").onchange=function(){
 $("#go").onclick=run;
 
 /* ---- init ---- */
-load();
+load();loadLog();
 if(!saved){var dt=detect();if(dt){if(dt.dev)S.dev=dt.dev;if(dt.ios)S.ios=dt.ios}}
 $$(".seg").forEach(function(s){var p=document.createElement("i");p.className="pill";s.insertBefore(p,s.firstChild)});
 $("#lgi").oninput=function(){S.lgi=+this.value;applyLG();save()};
 window.addEventListener("resize",placePills);
 applyOrder();applyBoot();
 try{var mq=matchMedia("(prefers-color-scheme: light)");if(mq.addEventListener)mq.addEventListener("change",render);else if(mq.addListener)mq.addListener(render)}catch(e){}
-if(!S.setup){setupGo(0,false);$("#setup").classList.add("show")}else render();
+if(!S.setup)setupGo(0,false);else render();
 $("#elleIc").src=ELLE;
-setTimeout(function(){var s=$("#splash");if(!s)return;s.classList.add("out");$(".app").classList.add("in");setTimeout(function(){s.remove()},800)},1900);
+setTimeout(function(){var s=$("#splash");if(!s)return;s.classList.add("out");if(S.setup)$(".app").classList.add("in");setTimeout(function(){s.remove();if(!S.setup){setupGo(0,false);$("#setup").classList.add("show")}},720)},1900);
 })();
 </script>
 </body>
